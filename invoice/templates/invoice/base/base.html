@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Invoice Management</title>
+
+    <!-- bootstrap5 css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="{% static '/css/sb-admin-2.css' %}" rel="stylesheet"></link>
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/016d1bf7c0.js" crossorigin="anonymous"></script>
+    <!-- bootstrap5 javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+
+    <!-- django-formset -->
+    <script type="module" src="{% static 'formset/js/django-formset.js' %}"></script>
+
+
+    {% block head_script %}
+    {% endblock %}
+</head>
+
+<body id="page-top">
+
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <div class="container-fluid">
+        <div class="row flex-sm-nowrap">
+            <!-- Sidebar -->
+            <div class="col-auto px-sm-1 px-0 bg-gray-800">
+                <div class="d-flex flex-column align-items-center px-3 pt-2 text-white min-vh-100">
+                    <!-- LOGO -->
+                    <a href="/"
+                       class="d-flex align-items-center p-0 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <div class="sidebar-brand-icon text-center">
+                            <img src="{% static '/img/logo.png' %}" width="120px" height="120px" alt="logo"
+                                 class="rounded mx-auto">
+                        </div>
+                    </a>
+                    <hr class="divider">
+
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-4 align-items-sm-start"
+                        id="menu">
+                        <!-- CREATE INVOICE -->
+                        <li class="nav-item active">
+                            <a href="{% url 'product-add' %}" class="nav-link align-middle px-0 pb-4 text-white">
+                                <i class="fas fa-pen-to-square"></i>
+                                <span>Create Invoice</span>
+                            </a>
+                        </li>
+
+                        <hr class="divider">
+                        <!-- INVOICES -->
+{#                        <li class="nav-item">#}
+{#                            <div class="dropdown pb-4">#}
+{#                                <a href="#submenu1"#}
+{#                                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"#}
+{#                                   id="dropdown-product" data-bs-toggle="dropdown" aria-expanded="false">#}
+{#                                    <i class="fas fa-money-check-dollar"></i>#}
+{#                                    <span class="d-none d-sm-inline mx-1">Invoices</span>#}
+{#                                </a>#}
+{#                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">#}
+{#                                    <li><a class="dropdown-item" href="{% url 'invoice-add' %}">Add</a></li>#}
+{#                                    <li><a class="dropdown-item" href="{% url 'invoice-list' %}">View List</a></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </li>#}
+
+                        <!-- PRODUCTS -->
+                        <li class="nav-item">
+                            <div class="dropdown pb-4">
+                                <a href="#submenu2"
+                                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                                   id="dropdown-product" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-boxes-packing"></i>
+                                    {#                                    fa-folder-open#}
+                                    <span class="d-none d-sm-inline mx-1">Products</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                                    <li><a class="dropdown-item" href="{% url 'product-add' %}">Add</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'product-list' %}">View List</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+{#                        <!-- CUSTOMERS -->#}
+{#                        <li class="nav-item">#}
+{#                            <div class="dropdown pb-4">#}
+{#                                <a href="#submenu3"#}
+{#                                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"#}
+{#                                   id="dropdown-product" data-bs-toggle="dropdown" aria-expanded="false">#}
+{#                                    <i class="fas fa-address-card"></i>#}
+{#                                    <span class="d-none d-sm-inline mx-1">Customers</span>#}
+{#                                </a>#}
+{#                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">#}
+{#                                    <li><a class="dropdown-item" href="{% url 'customer-add' %}">Add</a></li>#}
+{#                                    <li><a class="dropdown-item" href="{% url 'customer-list' %}">View List</a></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </li>#}
+{##}
+{#                        <!-- CONTRACTORS -->#}
+{#                        <li class="nav-item">#}
+{#                            <div class="dropdown pb-4">#}
+{#                                <a href="#submenu4"#}
+{#                                   class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"#}
+{#                                   id="dropdown-product" data-bs-toggle="dropdown" aria-expanded="false">#}
+{#                                    <i class="fas fa-building-user"></i>#}
+{#                                    <span class="d-none d-sm-inline mx-1">Contractors</span>#}
+{#                                </a>#}
+{#                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">#}
+{#                                    <li><a class="dropdown-item" href="{% url 'contractor-add' %}">Add</a></li>#}
+{#                                    <li><a class="dropdown-item" href="{% url 'contractor-list' %}">View List</a></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </li>#}
+
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                           id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            {#                            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30"#}
+                            {#                                 class="rounded-circle">#}
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span class="d-none d-sm-inline mx-1">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Sidebar -->
+            <div class="col-sm-10">
+                <div class="card w-100 shadow my-2">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% comment %}
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+    <!-- Sidebar Message -->
+    {% comment %}
+    <div class="sidebar-card">
+        <img class="sidebar-card-illustration mb-2" src="{% static 'img/undraw_rocket.svg' %}" alt="">
+        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
+        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+    </div>
+    {% endcomment %}
+
+</div>
+
+
+{% comment %}
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+    <!-- Main Content -->
+    <div id="content">
+
+        <!-- Topbar (The White Space Up Top) -->
+        {#<nav class="navbar navbar-expand navbar-light bg-white topbar mb-sm-1 static-top shadow" style="height:35px">#}
+        <!-- Sidebar Toggle (Topbar) -->
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+        </button>
+        {#</nav>#}
+        <!-- End of Topbar -->
+
+        {% comment %}
+                    <!-- Begin Page Content - Total Cards -->
+                    <a data-toggle="collapse" href="#summary-cards" aria-expanded="true"
+                       aria-controls="collapse-example" id="summary-collapse" class="d-block">
+                        <label class="m-0 font-weight-bold text-primary"></label>
+                        <i class="fa fa-chevron-down pull-left" style="font-size:16px"></i>
+                        <div id="summary-cards" class="container-fluid collapse">
+                            <!-- Content Row -->
+                            <div class="row">
+
+                                <!-- Total Products (Monthly) Card Example -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                        Total products
+                                                    </div>
+                                                    <div
+                                                            class="h5 mb-0 font-weight-bold text-gray-800">{{ total_product }}</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Total Customers (Monthly) Card  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Total customers
+                                                    </div>
+                                                    <div
+                                                            class="h5 mb-0 font-weight-bold text-gray-800">{{ total_customer }}</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-user fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Total Invoices (Monthly) Card  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-info shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div
+                                                            class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                        Total
+                                                        invoices
+                                                    </div>
+                                                    <div class="row no-gutters align-items-center">
+                                                        <div class="col-auto">
+                                                            <div
+                                                                    class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ total_invoice }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Total Income Card -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-warning shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                        Total income
+                                                    </div>
+                                                    <div
+                                                            class="h5 mb-0 font-weight-bold text-gray-800">{{ total_income }}</div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- END SUMMARY CARDS -->
+
+                    <!-- Content Row -->
+                    <!-- product_detail_formset.media -->
+
+                    {#                    {% block content %}{% endblock %}#}
+
+                    {% block invoice_content %}{% endblock %}
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2020</span>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
+{% endcomment %}
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+
+{% block custom_js %}{% endblock %}
+
+</body>
+
+
+</html>

@@ -1,0 +1,37 @@
+{% extends "invoice/base/base.html" %}
+{% load i18n %}
+<!-- Content Row -->
+{% block content %}
+
+
+    <!-- Card Header - Dropdown -->
+    <div class="card-header">
+        <a data-toggle="collapse" href="#product-add" aria-expanded="true"
+           aria-controls="collapse-example" id="product-heading" class="d-block">
+            <label class="m-0 font-weight-bold text-primary">Add Product</label>
+            <i class="fa fa-chevron-down pull-left" style="font-size:16px"></i>
+        </a>
+    </div>
+    <!-- PRODUCT FORM -->
+    <div id="product-add" class="card-body collapse show">
+        {% load render_form from formsetify %}
+        <django-formset endpoint="{{ request.path }}" csrf-token="{{ csrf_token }}">
+            {% render_form form %}
+
+            {% if add %}
+                <button type="button"
+                        click="submit({add: true}) -> proceed">{% translate "Add" %}</button>
+            {% else %}
+                <button type="button"
+                        click="submit({update: true}) -> proceed">{% translate "Update" %}</button>
+                <button type="button"
+                        click="submit({delete: true}) -> proceed">{% translate "Delete" %}</button>
+            {% endif %}
+        </django-formset>
+    </div>
+    </div>
+
+
+{% endblock %}
+
+
