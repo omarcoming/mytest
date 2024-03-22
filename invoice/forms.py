@@ -34,7 +34,7 @@ class ProductForm(ModelForm):
             'unit',
             'prod_name',
             'material',
-            # 'vendor',
+            'vendor',
             # 'id',
         ]
         widgets = {
@@ -53,7 +53,6 @@ class ProductForm(ModelForm):
             'vendor': forms.TextInput(attrs={
                 'class': 'form-control',
                 'id': 'vendor',
-                # 'hidden': 'true',
-                # 'value': 'Q-ARTS',
+
             }),
         }
