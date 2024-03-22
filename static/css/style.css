@@ -1,0 +1,56 @@
+#deposit {
+    color: green;
+    font-weight: bold;
+}
+
+#balance {
+    color: red;
+    font-weight: bold;
+}
+
+#subtotal {
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*#total {*/
+/*    font-weight: bold;*/
+/*}*/
+
+
+/*.qty-product {*/
+/*    border: 0;*/
+/*}*/
+
+/*.price-product {*/
+/*    border: 0;*/
+/*}*/
+
+/*.total-product {*/
+/*    border: 0;*/
+/*}*/
+
+/*.formNotes {*/
+/*    width: 75%;*/
+/*    height: 150px;*/
+
+/*}*/
+
+/*.invoiceTD {*/
+/*    border: 0;*/
+/*    padding-top: .5em;*/
+/*    padding-bottom: .5em;*/
+/*    padding-left: .5em;*/
+/*    padding-right: .5em;*/
+/*    width: 35%;*/
+/*}*/
+
+/*.invoiceNotes {*/
+/*    border: 0;*/
+/*    padding: .5em;*/
+/*    width: 75%;*/
+/*    height: 75%;*/
+/*}*/
