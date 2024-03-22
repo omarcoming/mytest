@@ -18,7 +18,7 @@ from .models import *
 
 
 class ProductForm(ModelForm):
-    id = forms.IntegerField(required=False, widget=forms.HiddenInput)
+    # id = forms.IntegerField(required=False, widget=forms.HiddenInput)
     default_renderer = FormRenderer(
         form_css_classes='row',
         field_css_classes={
@@ -35,28 +35,25 @@ class ProductForm(ModelForm):
             'prod_name',
             'material',
             # 'vendor',
-            'id',
+            # 'id',
         ]
         widgets = {
             'unit': forms.TextInput(attrs={
-                # 'class': 'form-control product-input mb-1 col-1',
                 'class': 'form-control',
                 'id': 'unit',
             }),
             'prod_name': forms.TextInput(attrs={
-                # 'class': 'form-control product-input mb-1 col-3',
                 'class': 'form-control',
                 'id': 'prod_name',
             }),
             'material': forms.Select(attrs={
-                # 'class': 'form-control product-input mb-1 col-2',
                 'class': 'form-control',
                 'id': 'material',
             }),
             'vendor': forms.TextInput(attrs={
                 'class': 'form-control',
                 'id': 'vendor',
-                'hidden': 'true',
-                'value': 'Q-ARTS',
+                # 'hidden': 'true',
+                # 'value': 'Q-ARTS',
             }),
         }
